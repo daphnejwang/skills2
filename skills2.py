@@ -40,19 +40,36 @@ return a list of all common items shared between both lists. This time,
 use a dictionary as part of your solution.
 """
 def common_items2(list1, list2):
-    pass
+    common_items_dict ={}
+
+    for i in list1:
+        if i in list2:
+            if not common_items_dict.get(i):
+                common_items_dict[i] = 1
+            else:
+                common_items_dict[i] +=1
+    print common_items_dict
 
 """
 Given a list of numbers, return list of number pairs that sum to zero
 """
 def sum_zero(list1):
-    pass
+    sum = 0
+    while list1:
+        num = list1.pop()
+        diff = sum - num
+        if diff in list1:
+            print([num, diff])
 
 """
 Given a list of words, return a list of words with duplicates removed
 """
 def find_duplicates(words):
-    pass
+    no_dupe_list = []
+    for w in words:
+        if not no_dupe_list.count(w):
+            no_dupe_list.append(w)
+    print no_dupe_list
 
 """
 Given a list of words, print the words in ascending order of length
@@ -60,7 +77,8 @@ Bonus: do it on a file instead of the list provided
 Bonus: print the words in alphabetical order in ascending order of length
 """
 def word_length(words):
-    pass
+    words.sort(key=len)
+    print words
 
 """
 Here's a table of English to Pirate translations
@@ -90,9 +108,12 @@ print the sentece translated to pirate.
 """
 
 def main():
-    # count_unique(string1)
-    # common_items(list1, list2)
+    count_unique(string1)
+    common_items(list1, list2)
     common_items2(list1, list2)
+    sum_zero(list1)
+    find_duplicates(words)
+    word_length(words)
 
 if __name__ == "__main__":
     main()
